@@ -1,0 +1,26 @@
+{
+  "name": "James Butt",
+  "age": 25,
+  "dateOfBirth": "1995-05-15",
+  "friends": [
+    {
+      "name": "Josephine Darakjy",
+      "age": 22,
+      "dateOfBirth": "1997-01-24",
+      "associatedAddresses": [
+        {
+          "street": "25 E 75th St #69",
+          "city": "Los Angeles",
+          "state": "CA",
+          "zip": "90034"
+        }
+      ]
+    }
+  ],
+  "primaryAddress": {
+    "street": "6649 N Blue Gum St",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "70116"
+  }
+}

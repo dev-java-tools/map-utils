@@ -16,7 +16,7 @@ This Java library contains the API to
 		* friends[].associatedAddresses[5].city
 			* In this you are setting the city of the 6th associatedAddresses of the first (default) friend in the list.
 			
-	* Create Map from 
-		* String
-		* Java File object
-		* Also from a custom model objects
+* Create Map from 
+	* String
+	* Java File object
+	* Also from a custom model objects

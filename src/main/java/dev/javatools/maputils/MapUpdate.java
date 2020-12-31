@@ -126,6 +126,7 @@ public class MapUpdate {
      */
     private void set(final Queue<String> pathQueue, final Map sourceMap, final Object fieldValue, final String processPath) {
         String originalKey = pathQueue.remove();
+        originalKey = originalKey.trim();
         String newProcessPath = (null == processPath ? "" : processPath + ".") + originalKey;
         // Only the following three scenatios handled at this time
         // 1. map inside map
@@ -136,13 +137,15 @@ public class MapUpdate {
             // Processing Map
             if (pathQueue.size() > 0) {
                 // intermediate field
-                Object innerElement = sourceMap.get(originalKey.substring(0, originalKey.lastIndexOf(OPEN_SQUARE)));
+                Object innerElement = sourceMap.get(originalKey);
                 if (null != innerElement && innerElement instanceof Map) {
                     // if the map exists, process the next element in the path
                     set(pathQueue, (Map) innerElement, fieldValue, newProcessPath);
                 } else if (null == innerElement) {
+                    Map newMap = new HashMap<>();
+                    sourceMap.put(originalKey, newMap);
                     // if the object is not found, then create the object and continue to process the next element in path
-                    set(pathQueue, new HashMap<>(), fieldValue, newProcessPath);
+                    set(pathQueue, newMap, fieldValue, newProcessPath);
                 } else {
                     // If the object type is not map, then this process is not supported at this time.
                     throw new MapUtilsException(originalKey + " is not a Map. Its object type is " + innerElement.getClass().getName() + ". At this time only maps and lists are supported.");

@@ -64,7 +64,7 @@ public final class MapToProperties {
      * @param source Map to process and generate the list of all properties
      * @return Sorted set of all the properties in the Map
      */
-    public static Map getProperties(Map source) {
+    public static Map<String, Object> getProperties(Map source) {
         Map results = new TreeMap<>();
         Map treeMap = MapSort.getSortedMap(source);
         MapToProperties mapToProperties = new MapToProperties();

@@ -1,5 +1,7 @@
 package dev.javatools.maputils;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.javatools.maputils.helpers.Format;
 import dev.javatools.maputils.helpers.MapUtilsException;
@@ -69,6 +71,29 @@ class MapUpdateTest {
         Map address = addresses.get(5);
         //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         assertEquals("San Ramon", address.get("city"));
+    }
+
+    @Test
+    void setTest041() {
+        Map test = new HashMap<>();
+        MapUpdate.set(" associatedAddresses[].city", test, "San Ramon");
+        List<Map> addresses = (List) test.get("associatedAddresses");
+        Map address = addresses.get(0);
+        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
+        assertEquals("San Ramon", address.get("city"));
+    }
+
+    @Test
+    void setTest042() throws JsonProcessingException {
+        Map test = new HashMap<>();
+        MapUpdate.set("friends[].address.state.zip", test, "22873");
+        List<Map> friends = (List) test.get("friends");
+        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
+        Map friend = friends.get(0);
+        Map address = (Map)friend.get("address");
+        Map state = (Map)address.get("state");
+        String zip = (String)state.get("zip");
+        assertEquals("22873", zip);
     }
 
     @Test

@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class MapToPropertiesTest {
+class MapPropertiesTest {
 
     private ClassLoader classLoader = getClass().getClassLoader();
     private Map inputMap;
@@ -30,7 +30,7 @@ class MapToPropertiesTest {
 
     @Test
     public void getPathsTest() {
-        Map properties = MapToProperties.getProperties(inputMap);
+        Map properties = MapProperties.getProperties(inputMap);
         assertTrue(properties.size() == allProperties.size());
         for (Object property : properties.entrySet()) {
             Map.Entry entry = (Map.Entry) property;

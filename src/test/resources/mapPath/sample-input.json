@@ -1,0 +1,235 @@
+{
+  "name": "James Butt",
+  "age": 25,
+  "dateOfBirth": "1995-05-15",
+  "friends": [
+    {
+      "name": "Josephine Darakjy",
+      "age": 22,
+      "dateOfBirth": "1997-01-24",
+      "primaryAddress": {
+        "street": "5 Boston Ave #88",
+        "city": "Sioux Falls",
+        "state": "SD",
+        "zip": "57105"
+      },
+      "associatedAddresses": [
+        {
+          "street": "25 E 75th St #69",
+          "city": "Los Angeles",
+          "state": "CA",
+          "zip": "90034"
+        },
+        {
+          "street": "98 Connecticut Ave Nw",
+          "city": "Chagrin Falls",
+          "state": "OH",
+          "zip": "44023"
+        },
+        {
+          "street": "56 E Morehead St",
+          "city": "Laredo Webb",
+          "state": "TX",
+          "zip": "78045"
+        },
+        {
+          "street": "73 State Road 434 E",
+          "city": "Phoenix",
+          "state": "AZ",
+          "zip": "85013"
+        }
+      ]
+    },
+    {
+      "name": "Art Venere",
+      "age": 28,
+      "dateOfBirth": "1993-11-18",
+      "associatedAddresses": [
+        {
+          "street": "69734 E Carrillo St",
+          "city": "Mc Minnville",
+          "state": "TN",
+          "zip": "37110"
+        },
+        {
+          "street": "322 New Horizon Blvd",
+          "city": "Milwaukee",
+          "state": "WI",
+          "zip": "53207"
+        },
+        {
+          "street": "1 State Route 27",
+          "city": "Taylor",
+          "state": "MI",
+          "zip": "48180"
+        },
+        {
+          "street": "394 Manchester Blvd",
+          "city": "Rockford",
+          "state": "IL",
+          "zip": "61109"
+        }
+      ],
+      "primaryAddress": {
+        "street": "228 Runamuck Pl #2808",
+        "city": "Baltimore",
+        "state": "MD",
+        "zip": "21224"
+      }
+    },
+    {
+      "name": "Lenna Paprocki",
+      "age": 96,
+      "dateOfBirth": "1924-01-14",
+      "primaryAddress": {
+        "street": "2371 Jerrold Ave",
+        "city": "Kulpsville",
+        "state": "PA",
+        "zip": "19443"
+      },
+      "associatedAddresses": [
+        {
+          "street": "6 S 33rd St",
+          "city": "Aston",
+          "state": "PA",
+          "zip": "19014"
+        },
+        {
+          "street": "6 Greenleaf Ave",
+          "city": "San Jose",
+          "state": "CA",
+          "zip": "95111"
+        },
+        {
+          "street": "618 W Yakima Ave",
+          "city": "Irving",
+          "state": "TX",
+          "zip": "75062"
+        },
+        {
+          "street": "74 S Westgate St",
+          "city": "Albany",
+          "state": "NY",
+          "zip": "12204"
+        }
+      ],
+      "spouse": {
+        "name": "Alishia Sergi",
+        "age": 36,
+        "dateOfBirth": "1995-07-09",
+        "children": {
+          "name": "Solange Shinko",
+          "age": 7,
+          "dateOfBirth": "2003-11-02",
+          "spouse": {
+            "name": "Jose Stockham",
+            "age": 5,
+            "dateOfBirth": "2018-02-28"
+          }
+        }
+      }
+    },
+    {
+      "name": "Donette Foller",
+      "age": 55,
+      "dateOfBirth": "1965-12-19",
+      "associatedAddresses": [
+        {
+          "street": "3273 State St",
+          "city": "Middlesex",
+          "state": "NJ",
+          "zip": "8846"
+        },
+        {
+          "street": "1 Central Ave",
+          "city": "Stevens Point",
+          "state": "WI",
+          "zip": "54481"
+        },
+        {
+          "street": "86 Nw 66th St #8673",
+          "city": "Shawnee",
+          "state": "KS",
+          "zip": "66218"
+        },
+        {
+          "street": "2 Cedar Ave #84",
+          "city": "Easton",
+          "state": "MD",
+          "zip": "21601"
+        }
+      ],
+      "primaryAddress": {
+        "street": "37275 St  Rt 17m M",
+        "city": "Middle Island",
+        "state": "NY",
+        "zip": "11953"
+      }
+    }
+  ],
+  "associatedAddresses": [
+    {
+      "street": "4 B Blue Ridge Blvd",
+      "city": "Brighton",
+      "state": "MI",
+      "zip": "48116"
+    },
+    {
+      "street": "8 W Cerritos Ave #54",
+      "city": "Bridgeport",
+      "state": "NJ",
+      "zip": "8014"
+    },
+    {
+      "street": "639 Main St",
+      "city": "Anchorage",
+      "state": "AK",
+      "zip": "99501"
+    },
+    {
+      "street": "34 Center St",
+      "city": "Hamilton",
+      "state": "OH",
+      "zip": "45011"
+    },
+    {
+      "street": "3 Mcauley Dr",
+      "city": "Ashland",
+      "state": "OH",
+      "zip": "44805"
+    },
+    {
+      "street": "7 W Jackson Blvd",
+      "city": "San Jose",
+      "state": "CA",
+      "zip": "95111"
+    },
+    {
+      "street": "7 Eads St",
+      "city": "Chicago",
+      "state": "IL",
+      "zip": "60632"
+    }
+  ],
+  "primaryAddress": {
+    "street": "6649 N Blue Gum St",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": "70116"
+  },
+  "spouse": {
+    "name": "Willow Kusko",
+    "age": 36,
+    "dateOfBirth": "1995-07-09",
+    "children": {
+      "name": "Bernardo Figeroa",
+      "age": 7,
+      "dateOfBirth": "2003-11-02",
+      "spouse": {
+        "name": "Francine Vocelka",
+        "age": 5,
+        "dateOfBirth": "2018-02-28"
+      }
+    }
+  }
+}

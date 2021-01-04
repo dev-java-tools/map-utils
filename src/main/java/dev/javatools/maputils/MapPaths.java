@@ -56,9 +56,9 @@ import java.util.TreeSet;
  *          primaryAddress.zip
  * </pre>
  */
-public final class MapToPaths {
+public final class MapPaths {
 
-    private MapToPaths() {
+    private MapPaths() {
     }
 
     /**
@@ -70,8 +70,8 @@ public final class MapToPaths {
     public static Set<String> getPaths(final Map input) {
         Set<String> results = new TreeSet<>();
         Map treeMap = MapSort.getSortedMap(input);
-        MapToPaths mapToPaths = new MapToPaths();
-        mapToPaths.getPaths(treeMap, results, null, false);
+        MapPaths mapPaths = new MapPaths();
+        mapPaths.getPaths(treeMap, results, null, false);
         return results;
     }
 
@@ -84,8 +84,8 @@ public final class MapToPaths {
     public static Set<String> getUniquePaths(final Map input) {
         Set<String> results = new TreeSet<>();
         Map treeMap = MapSort.getSortedMap(input);
-        MapToPaths mapToPaths = new MapToPaths();
-        mapToPaths.getPaths(treeMap, results, null, true);
+        MapPaths mapPaths = new MapPaths();
+        mapPaths.getPaths(treeMap, results, null, true);
         return results;
     }
 

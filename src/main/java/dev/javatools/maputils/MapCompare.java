@@ -27,8 +27,8 @@ public final class MapCompare {
         } else if (null == left && null == right) {
             return true;
         }
-        Map leftProperties = MapToProperties.getProperties(left);
-        Map rightProperties = MapToProperties.getProperties(right);
+        Map leftProperties = MapProperties.getProperties(left);
+        Map rightProperties = MapProperties.getProperties(right);
         if (null == rightProperties ^ null == leftProperties) {
             return false;
         } else if (null == leftProperties && null == rightProperties) {

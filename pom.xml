@@ -6,7 +6,7 @@
 
     <groupId>dev.javatools</groupId>
     <artifactId>map-utils</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <packaging>jar</packaging>
 
     <name>map-utils</name>
@@ -36,8 +36,8 @@
         <url>https://github.com/dev-java-tools/map-utils/tree/master</url>
     </scm>
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <com.fasterxml.jackson.core.version>[2.12.0,)</com.fasterxml.jackson.core.version>
         <org.junit.jupiter.version>[5.7.0,)</org.junit.jupiter.version>
         <org.slf4j.api.version>[1.7.30,)</org.slf4j.api.version>

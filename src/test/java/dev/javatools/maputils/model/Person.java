@@ -14,4 +14,6 @@ public class Person {
     private List<Person> friends;
     private List<Address> associatedAddresses;
     private Address primaryAddress;
+    private Person spouse;
+    private Person children;
 }

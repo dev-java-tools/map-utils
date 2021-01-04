@@ -1,6 +1,5 @@
 package dev.javatools.maputils;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.javatools.maputils.helpers.Format;
@@ -29,11 +28,6 @@ class MapUpdateTest {
         Path jsonSampleInputFilePath = Path.of(classLoader.getResource("mapUpdate/sample-input.json").getPath());
         String sampleJsonInput = Files.readString(jsonSampleInputFilePath);
         sampleInput = MapCreator.create(sampleJsonInput, Format.JSON);
-
-    }
-
-    @Test
-    void get() {
 
     }
 
@@ -90,9 +84,9 @@ class MapUpdateTest {
         List<Map> friends = (List) test.get("friends");
         System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         Map friend = friends.get(0);
-        Map address = (Map)friend.get("address");
-        Map state = (Map)address.get("state");
-        String zip = (String)state.get("zip");
+        Map address = (Map) friend.get("address");
+        Map state = (Map) address.get("state");
+        String zip = (String) state.get("zip");
         assertEquals("22873", zip);
     }
 
@@ -181,7 +175,7 @@ class MapUpdateTest {
 
     @Test
     void setTest10() {
-        MapUtilsException mapUtilsException = assertThrows(MapUtilsException.class, ()->MapUpdate.set("friends[{name=Lenna Paprocki}].associatedAddresses[{state=TX}, {city=Irving}]", sampleInput, "street in Irving, Texas"));
+        MapUtilsException mapUtilsException = assertThrows(MapUtilsException.class, () -> MapUpdate.set("friends[{name=Lenna Paprocki}].associatedAddresses[{state=TX}, {city=Irving}]", sampleInput, "street in Irving, Texas"));
         assertEquals("friends[{name=Lenna Paprocki}].associatedAddresses[{state=TX}, {city=Irving}]: Found the element in this path, but to assign the value, we also need a key.", mapUtilsException.getMessage());
     }
 }

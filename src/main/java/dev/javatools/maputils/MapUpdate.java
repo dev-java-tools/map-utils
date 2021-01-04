@@ -25,31 +25,8 @@ import java.util.*;
  */
 public class MapUpdate {
 
-    private static final String PATH_DELIMITER_REGEX = "[.]";
-    private static final String LIST_INDICATOR = "[]";
 
-    /**
-     * Currently it has the basic implementation. It can set a value at a specific map path
-     * If there is a list in the path, you need to specify it as []
-     * <pre>
-     *  Example:
-     *  name.friends[].address.city
-     *  The above path will get the first friend's city address.
-     * </pre>
-     * TODO: Need to handle objects inside the list, similar to the "set" method implementation.
-     *
-     * @param mapPath path to the field in Map.
-     * @param map Source map that needs to be searched
-     * @return the value at the path specified will be returned, if the path des not exist, it will return null.
-     */
-    public static Object get(final String mapPath, final Map map) {
-        if (null != mapPath) {
-            String[] sourcePathArray = mapPath.split(PATH_DELIMITER_REGEX);
-            MapUpdate mapUpdate = new MapUpdate();
-            return mapUpdate.get(sourcePathArray, map);
-        }
-        return null;
-    }
+    private static final String PATH_DELIMITER_REGEX = "[.]";
 
     /**
      * <pre>
@@ -71,9 +48,9 @@ public class MapUpdate {
      * </pre>
      * <p>
      *
-     * @param mapPath Path in the Map
+     * @param mapPath   Path in the Map
      * @param sourceMap the map that needs to be updated
-     * @param value the alue that needs to be updated with in the path specified.
+     * @param value     the alue that needs to be updated with in the path specified.
      */
     public static void set(final String mapPath, final Map sourceMap, final Object value) {
         if (null != mapPath && null != sourceMap) {
@@ -85,37 +62,6 @@ public class MapUpdate {
             mapUpdate.set(paths, sourceMap, value, null);
         } else {
             throw new MapUtilsException("Not a valid input, mapPath and sourceMap are mandatory fields.");
-        }
-    }
-
-    /**
-     * Currently it has the basic implementation. It can set a value at a specific map path
-     * TODO: Need to handle onbects inside the list, similar to the "set" method implementation.
-     *
-     * @param sourcePathArray path to the field in Map.
-     * @param sourceMap Source map that needs to be searched
-     * @return the value at the path specified will be returned, if the path des not exist, it will return null.
-     */
-    private Object get(final String[] sourcePathArray, final Map sourceMap) {
-        try {
-            if (sourcePathArray.length == 0 || sourceMap.get(sourcePathArray[0]) == null) {
-                return null;
-            }
-            if (sourcePathArray.length > 1) {
-                if (sourcePathArray[0].contains(LIST_INDICATOR) && sourceMap.get(sourcePathArray[0]) instanceof List) {
-                    return sourceMap.get(sourcePathArray[0]);
-                }
-                if (!(sourceMap.get(sourcePathArray[0]) instanceof Map)) {
-                    return null;
-                } else {
-                    String[] subArray = Arrays.copyOfRange(sourcePathArray, 1, sourcePathArray.length);
-                    return get(subArray, (Map) sourceMap.get(sourcePathArray[0]));
-                }
-            } else {
-                return sourceMap.get(sourcePathArray[0]);
-            }
-        } catch (NullPointerException e) {
-            return null;
         }
     }
 
@@ -190,11 +136,10 @@ public class MapUpdate {
 
 
     /**
-     *
-     * @param pathQueue - elements that are still need to be processed in the path queue
-     * @param sourceList - list of input elements used to process the path
-     * @param fieldValue - value of the field that needs to be updated
-     * @param parameters - list of parameters that are used to filter the map to update the right element
+     * @param pathQueue   - elements that are still need to be processed in the path queue
+     * @param sourceList  - list of input elements used to process the path
+     * @param fieldValue  - value of the field that needs to be updated
+     * @param parameters  - list of parameters that are used to filter the map to update the right element
      * @param processPath - the path that is already navigated to process this element
      */
     private void set(final Queue<String> pathQueue, final List sourceList, final Object fieldValue, final String parameters, final String processPath) {

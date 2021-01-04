@@ -55,9 +55,9 @@ import java.util.TreeMap;
  *          primaryAddress.zip=70116
  * </pre>
  */
-public final class MapToProperties {
+public final class MapProperties {
 
-    private MapToProperties() {
+    private MapProperties() {
     }
 
     /**
@@ -67,8 +67,8 @@ public final class MapToProperties {
     public static Map<String, Object> getProperties(Map source) {
         Map results = new TreeMap<>();
         Map treeMap = MapSort.getSortedMap(source);
-        MapToProperties mapToProperties = new MapToProperties();
-        mapToProperties.getProperties(treeMap, results, null);
+        MapProperties mapProperties = new MapProperties();
+        mapProperties.getProperties(treeMap, results, null);
         return results;
     }
 

@@ -13,7 +13,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class MapToPathsTest {
+class MapPathsTest {
     private ClassLoader classLoader = getClass().getClassLoader();
     private Map inputMap;
     ArrayList<String> allPaths;
@@ -35,7 +35,7 @@ class MapToPathsTest {
 
     @Test
     void getPaths() {
-        Set<String> paths = MapToPaths.getPaths(inputMap);
+        Set<String> paths = MapPaths.getPaths(inputMap);
         assertTrue(paths.size() == allPaths.size());
         for (String path : paths) {
             assertTrue(allPaths.contains(path));
@@ -44,7 +44,7 @@ class MapToPathsTest {
 
     @Test
     void getUniquePaths() {
-        Set<String> paths = MapToPaths.getUniquePaths(inputMap);
+        Set<String> paths = MapPaths.getUniquePaths(inputMap);
         assertTrue(paths.size() == allUniquePaths.size());
         for (String path : paths) {
             assertTrue(allUniquePaths.contains(path));

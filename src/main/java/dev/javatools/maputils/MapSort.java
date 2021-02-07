@@ -1,12 +1,19 @@
 package dev.javatools.maputils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.javatools.maputils.helpers.Constants;
 import dev.javatools.maputils.helpers.MapUtilsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 
@@ -77,9 +84,8 @@ public final class MapSort {
             if (null != listKeys) {
                 listKeysInternal.putAll(listKeys);
             }
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonString = objectMapper.writeValueAsString(input);
-            Map sanitizedMap = objectMapper.readValue(jsonString, Map.class);
+            String jsonString = Constants.jsonMapper.writeValueAsString(input);
+            Map sanitizedMap = Constants.jsonMapper.readValue(jsonString, Map.class);
             return getSortedMap(sanitizedMap, listKeysInternal, null);
         } catch (JsonProcessingException jsonProcessingException) {
             throw new MapUtilsException(jsonProcessingException);
@@ -182,10 +188,14 @@ public final class MapSort {
                 response.add(currentItem);
             }
         }
+        if (null == response) {
+            response = new TreeSet();
+        }
         if (listKeys.containsKey(prefix) && response instanceof HashSet) {
             return response.stream().sorted(Comparator.comparing(innerMap -> ((String) ((Map) innerMap).get(listKeys.get(prefix))))).collect(Collectors.toList());
         } else {
             return response.stream().collect(Collectors.toList());
+
         }
     }
 }

@@ -1,7 +1,6 @@
 package dev.javatools.maputils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.javatools.maputils.helpers.Format;
 import dev.javatools.maputils.helpers.MapUtilsException;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,13 +13,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class MapUpdateTest {
 
     private final ClassLoader classLoader = getClass().getClassLoader();
-    ObjectMapper objectMapper = new ObjectMapper();
     private Map sampleInput;
 
     @BeforeEach
@@ -63,7 +63,6 @@ class MapUpdateTest {
         MapUpdate.set("associatedAddresses[5].city", test, "San Ramon");
         List<Map> addresses = (List) test.get("associatedAddresses");
         Map address = addresses.get(5);
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         assertEquals("San Ramon", address.get("city"));
     }
 
@@ -73,7 +72,6 @@ class MapUpdateTest {
         MapUpdate.set(" associatedAddresses[].city", test, "San Ramon");
         List<Map> addresses = (List) test.get("associatedAddresses");
         Map address = addresses.get(0);
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         assertEquals("San Ramon", address.get("city"));
     }
 
@@ -82,7 +80,6 @@ class MapUpdateTest {
         Map test = new HashMap<>();
         MapUpdate.set("friends[].address.state.zip", test, "22873");
         List<Map> friends = (List) test.get("friends");
-        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         Map friend = friends.get(0);
         Map address = (Map) friend.get("address");
         Map state = (Map) address.get("state");
@@ -97,7 +94,6 @@ class MapUpdateTest {
         List<Map> friends = (List) test.get("friends");
         List<Map> addresses = (List) friends.get(0).get("associatedAddresses");
         Map address = addresses.get(5);
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         assertEquals("San Ramon", address.get("city"));
     }
 
@@ -108,7 +104,6 @@ class MapUpdateTest {
         List<Map> friends = (List) test.get("friends");
         List<Map> addresses = (List) friends.get(2).get("associatedAddresses");
         Map address = addresses.get(5);
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(test));
         assertEquals("San Ramon", address.get("city"));
     }
 
@@ -150,7 +145,6 @@ class MapUpdateTest {
                 }
             }
         }
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(sampleInput));
     }
 
     @Test
@@ -170,7 +164,6 @@ class MapUpdateTest {
                 }
             }
         }
-        //System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(sampleInput));
     }
 
     @Test

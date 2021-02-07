@@ -1,6 +1,5 @@
 package dev.javatools.maputils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.javatools.maputils.helpers.Format;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MapPropertyTest {
 
     private final ClassLoader classLoader = getClass().getClassLoader();
-    ObjectMapper objectMapper = new ObjectMapper();
     private Map sampleInput;
 
     @BeforeEach

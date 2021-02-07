@@ -1,11 +1,10 @@
 package dev.javatools.maputils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import dev.javatools.maputils.helpers.Constants;
 import dev.javatools.maputils.helpers.Format;
 import dev.javatools.maputils.model.Person;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -20,79 +19,77 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class MapCreatorTest {
 
     private ClassLoader classLoader = getClass().getClassLoader();
-    private ObjectMapper jsonObjectMapper = new ObjectMapper();
-    private ObjectMapper yamlObjectMapper = new ObjectMapper(new YAMLFactory());
 
-    private String sampleJsonInput;
-    private String expectedJsonFileOutput;
-    private String expectedJsonModelOutput;
-    private File jsonInputFile;
+    private static String sampleJsonInput;
+    private static String expectedJsonFileOutput;
+    private static String expectedJsonModelOutput;
+    private static File jsonInputFile;
 
-    private String sampleYamlInput;
-    private String expectedYamlFileOutput;
-    private String expectedYamlModelOutput;
-    private File yamlInputFile;
+    private static String sampleYamlInput;
+    private static String expectedYamlFileOutput;
+    private static String expectedYamlModelOutput;
+    private static File yamlInputFile;
 
-    private Person person;
+    private static Person person;
 
-    @BeforeEach
-    public void setUp() throws IOException {
-        Path jsonSampleInputFilePath = Path.of(classLoader.getResource("mapCreator/sample-input.json").getPath());
+    @BeforeAll
+    public static void beforeAll() throws IOException {
+        Path jsonSampleInputFilePath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/sample-input.json").getPath());
         sampleJsonInput = Files.readString(jsonSampleInputFilePath);
         jsonInputFile = new File(jsonSampleInputFilePath.toAbsolutePath().toString());
 
-        Path expectedJsonFileOutputPath = Path.of(classLoader.getResource("mapCreator/expected-json-file-output.json").getPath());
+        Path expectedJsonFileOutputPath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/expected-json-file-output.json").getPath());
         expectedJsonFileOutput = Files.readString(expectedJsonFileOutputPath);
-        Path expectedJsonModelOutputPath = Path.of(classLoader.getResource("mapCreator/expected-json-model-output.json").getPath());
+        Path expectedJsonModelOutputPath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/expected-json-model-output.json").getPath());
         expectedJsonModelOutput = Files.readString(expectedJsonModelOutputPath);
 
 
-        Path yamlSampleInputFilePath = Path.of(classLoader.getResource("mapCreator/sample-input.yml").getPath());
+        Path yamlSampleInputFilePath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/sample-input.yml").getPath());
         sampleYamlInput = Files.readString(yamlSampleInputFilePath);
         yamlInputFile = new File(jsonSampleInputFilePath.toAbsolutePath().toString());
 
-        Path expectedYamlFileOutputPath = Path.of(classLoader.getResource("mapCreator/expected-yaml-file-output.yml").getPath());
+        Path expectedYamlFileOutputPath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/expected-yaml-file-output.yml").getPath());
         expectedYamlFileOutput = Files.readString(expectedYamlFileOutputPath);
-        Path expectedYamlModelOutputPath = Path.of(classLoader.getResource("mapCreator/expected-yaml-model-output.yml").getPath());
+        Path expectedYamlModelOutputPath = Path.of(MapCreatorTest.class.getClassLoader().getResource("mapCreator/expected-yaml-model-output.yml").getPath());
         expectedYamlModelOutput = Files.readString(expectedYamlModelOutputPath);
 
-        person = jsonObjectMapper.readValue(sampleJsonInput, Person.class);
+        person = Constants.jsonMapper.readValue(sampleJsonInput, Person.class);
     }
 
     @Test
     void testCreateWithJsonFile() throws JsonProcessingException {
         Map response = MapCreator.create(jsonInputFile, Format.JSON);
-        assertEquals(expectedJsonFileOutput, jsonObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedJsonFileOutput, Constants.jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
     @Test
     void testCreateWithJsonString() throws JsonProcessingException {
         Map response = MapCreator.create(sampleJsonInput, Format.JSON);
-        assertEquals(expectedJsonFileOutput, jsonObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedJsonFileOutput, Constants.jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
     @Test
     void testCreateWithYamlFile() throws JsonProcessingException {
         Map response = MapCreator.create(yamlInputFile, Format.YAML);
-        assertEquals(expectedYamlFileOutput, yamlObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedYamlFileOutput, Constants.yamlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
     @Test
     void testCreateWithYamlString() throws JsonProcessingException {
         Map response = MapCreator.create(sampleYamlInput, Format.YAML);
-        assertEquals(expectedYamlFileOutput, yamlObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedYamlFileOutput, Constants.yamlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
     @Test
     void testCreateWithObjectJson() throws JsonProcessingException {
         Map response = MapCreator.create(person);
-        assertEquals(expectedJsonModelOutput, jsonObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedJsonModelOutput, Constants.jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
     @Test
     void testCreateWithObjectYaml() throws JsonProcessingException {
         Map response = MapCreator.create(person);
-        assertEquals(expectedYamlModelOutput, yamlObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
+        assertEquals(expectedYamlModelOutput, Constants.yamlMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response));
     }
 
 }

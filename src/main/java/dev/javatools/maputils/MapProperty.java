@@ -68,7 +68,7 @@ public class MapProperty {
         while (!pathQueue.isEmpty() && null != currentValue) {
             String currentElement = pathQueue.remove();
             if (currentElement.matches(LIST_MATCH)) {
-                currentValue = processList(currentElement, (Map)currentValue);
+                currentValue = processList(currentElement, (Map) currentValue);
             } else {
                 currentValue = ((Map) currentValue).get(currentElement);
             }

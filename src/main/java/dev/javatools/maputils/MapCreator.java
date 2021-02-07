@@ -1,9 +1,7 @@
 package dev.javatools.maputils;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import dev.javatools.maputils.helpers.Constants;
 import dev.javatools.maputils.helpers.Format;
 import dev.javatools.maputils.helpers.MapUtilsException;
 
@@ -23,9 +21,6 @@ import java.util.Map;
  * </pre>
  */
 public final class MapCreator {
-
-    private static final ObjectMapper jsonMapper = new ObjectMapper();
-    private static final ObjectMapper yamlMapper = new ObjectMapper(new YAMLFactory());
 
     private MapCreator() {
     }
@@ -58,9 +53,9 @@ public final class MapCreator {
         try {
             Map mapInput;
             if (format == Format.JSON) {
-                mapInput = jsonMapper.readValue(input, Map.class);
+                mapInput = Constants.jsonMapper.readValue(input, Map.class);
             } else {
-                mapInput = yamlMapper.readValue(input, Map.class);
+                mapInput = Constants.yamlMapper.readValue(input, Map.class);
             }
             return mapInput;
         } catch (JsonProcessingException jsonProcessingException) {
@@ -76,9 +71,9 @@ public final class MapCreator {
      */
     public static Map create(final Object input) {
         try {
-            jsonMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-            String jsonString = jsonMapper.writeValueAsString(input);
-            return jsonMapper.readValue(jsonString, Map.class);
+
+            String jsonString = Constants.jsonMapper.writeValueAsString(input);
+            return Constants.jsonMapper.readValue(jsonString, Map.class);
         } catch (JsonProcessingException jsonProcessingException) {
             throw new MapUtilsException(jsonProcessingException);
         }

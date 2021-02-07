@@ -1,0 +1,137 @@
+{
+  "age" : 25,
+  "associatedAddresses" : [ ],
+  "dateOfBirth" : "1995-05-15",
+  "friends" : [ {
+    "age" : 28,
+    "associatedAddresses" : [ {
+      "city" : "Mc Minnville",
+      "state" : "TN",
+      "street" : "69734 E Carrillo St",
+      "zip" : "37110"
+    }, {
+      "city" : "Milwaukee",
+      "state" : "WI",
+      "street" : "322 New Horizon Blvd",
+      "zip" : "53207"
+    }, {
+      "city" : "Rockford",
+      "state" : "IL",
+      "street" : "394 Manchester Blvd",
+      "zip" : "61109"
+    }, {
+      "city" : "Taylor",
+      "state" : "MI",
+      "street" : "1 State Route 27",
+      "zip" : "48180"
+    } ],
+    "dateOfBirth" : "1993-11-18",
+    "name" : "Art Venere",
+    "primaryAddress" : {
+      "city" : "Baltimore",
+      "state" : "MD",
+      "street" : "228 Runamuck Pl #2808",
+      "zip" : "21224"
+    }
+  }, {
+    "age" : 55,
+    "associatedAddresses" : [ {
+      "city" : "Easton",
+      "state" : "MD",
+      "street" : "2 Cedar Ave #84",
+      "zip" : "21601"
+    }, {
+      "city" : "Middlesex",
+      "state" : "NJ",
+      "street" : "3273 State St",
+      "zip" : "8846"
+    }, {
+      "city" : "Shawnee",
+      "state" : "KS",
+      "street" : "86 Nw 66th St #8673",
+      "zip" : "66218"
+    }, {
+      "city" : "Stevens Point",
+      "state" : "WI",
+      "street" : "1 Central Ave",
+      "zip" : "54481"
+    } ],
+    "dateOfBirth" : "1965-12-19",
+    "name" : "Donette Foller",
+    "primaryAddress" : {
+      "city" : "Middle Island",
+      "state" : "NY",
+      "street" : "37275 St  Rt 17m M",
+      "zip" : "11953"
+    }
+  }, {
+    "age" : 22,
+    "associatedAddresses" : [ {
+      "city" : "Chagrin Falls",
+      "state" : "OH",
+      "street" : "98 Connecticut Ave Nw",
+      "zip" : "44023"
+    }, {
+      "city" : "Laredo Webb",
+      "state" : "TX",
+      "street" : "56 E Morehead St",
+      "zip" : "78045"
+    }, {
+      "city" : "Los Angeles",
+      "state" : "CA",
+      "street" : "25 E 75th St #69",
+      "zip" : "90034"
+    }, {
+      "city" : "Phoenix",
+      "state" : "AZ",
+      "street" : "73 State Road 434 E",
+      "zip" : "85013"
+    } ],
+    "dateOfBirth" : "1997-01-24",
+    "name" : "Josephine Darakjy",
+    "primaryAddress" : {
+      "city" : "Sioux Falls",
+      "state" : "SD",
+      "street" : "5 Boston Ave #88",
+      "zip" : "57105"
+    }
+  }, {
+    "age" : 96,
+    "associatedAddresses" : [ {
+      "city" : "Albany",
+      "state" : "NY",
+      "street" : "74 S Westgate St",
+      "zip" : "12204"
+    }, {
+      "city" : "Aston",
+      "state" : "PA",
+      "street" : "6 S 33rd St",
+      "zip" : "19014"
+    }, {
+      "city" : "Irving",
+      "state" : "TX",
+      "street" : "618 W Yakima Ave",
+      "zip" : "75062"
+    }, {
+      "city" : "San Jose",
+      "state" : "CA",
+      "street" : "6 Greenleaf Ave",
+      "zip" : "95111"
+    } ],
+    "dateOfBirth" : "1924-01-14",
+    "name" : "Lenna Paprocki",
+    "primaryAddress" : {
+      "city" : "Kulpsville",
+      "state" : "PA",
+      "street" : "2371 Jerrold Ave",
+      "zip" : "19443"
+    }
+  } ],
+  "name" : "James Butt",
+  "primaryAddress" : {
+    "city" : "New Orleans",
+    "state" : "LA",
+    "street" : "6649 N Blue Gum St",
+    "zip" : "70116"
+  }
+}

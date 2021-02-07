@@ -3,7 +3,12 @@ package dev.javatools.maputils;
 
 import dev.javatools.maputils.helpers.MapUtilsException;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * You can add, update, delete any element in the map by specifying the path in the following format.

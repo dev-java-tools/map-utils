@@ -73,4 +73,20 @@ class MapSortTest {
         assertEquals(sortedMapString, emptyArrayTestResponseString);
     }
 
+    @Test
+    public void fieldTypeTest() throws IOException {
+        Path emptyArrayTestRequest = Path.of(classLoader.getResource("mapSort/sort-on-nexted-field-in-list-input.json").getPath());
+        String emptyArrayTestRequestString = Files.readString(emptyArrayTestRequest);
+        emptyArrayTestRequestMap = MapCreator.create(emptyArrayTestRequestString, Format.JSON);
+
+        Path emptyArrayTestResponsePath = Path.of(classLoader.getResource("mapSort/sort-on-nexted-field-in-list-output.json").getPath());
+        emptyArrayTestResponseString = Files.readString(emptyArrayTestResponsePath);
+
+        listFilters = new HashMap<>();
+        listFilters.put("friends[]", "primaryAddress.street");
+        listFilters.put("friends[].associatedAddresses[]", "city");
+        Map sortedMap = MapSort.getSortedMap(emptyArrayTestRequestMap, listFilters);
+        String sortedMapString = Constants.jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(sortedMap);
+        assertEquals(sortedMapString, emptyArrayTestResponseString);
+    }
 }

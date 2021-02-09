@@ -6,9 +6,11 @@ import dev.javatools.maputils.helpers.MapUtilsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -191,11 +193,44 @@ public final class MapSort {
         if (null == response) {
             response = new TreeSet();
         }
-        if (listKeys.containsKey(prefix) && response instanceof HashSet) {
-            return response.stream().sorted(Comparator.comparing(innerMap -> ((String) ((Map) innerMap).get(listKeys.get(prefix))))).collect(Collectors.toList());
+        if (listKeys.containsKey(prefix) && (response instanceof HashSet || response instanceof TreeSet)) {
+            List<Map> finalResponse = new LinkedList();
+            response.stream().forEach(item -> finalResponse.add((Map) item));
+            MapComparator mapComparator = new MapComparator(listKeys.get(prefix));
+            Collections.sort(finalResponse, mapComparator);
+            return finalResponse;
         } else {
             return response.stream().collect(Collectors.toList());
+        }
+    }
+
+    static class MapComparator implements Comparator<Map> {
+
+        String key;
+
+        public MapComparator(final String localKey) {
+            key = localKey;
+        }
+
+        @Override
+        public int compare(Map firstMap, Map secondMap) {
+
+            if ((firstMap == null || null == MapProperty.get(key, firstMap)) && (secondMap == null || null == MapProperty.get(key, secondMap))) {
+                return 0;
+            }
+
+            if (firstMap == null || null == MapProperty.get(key, firstMap)) {
+                return -1;
+            }
+
+            if (secondMap == null || null == MapProperty.get(key, secondMap)) {
+                return 1;
+            }
+
+            return MapProperty.get(key, firstMap).toString().compareTo(MapProperty.get(key, secondMap).toString());
 
         }
     }
 }
+
+
